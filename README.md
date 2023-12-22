@@ -1,5 +1,5 @@
 # FelisMq
-A library that implements a way to consume MQTT message by topic avoiding to write every time the listening part.
+A library that implements a way to consume MQTT message by topic avoiding to write every time the listening part. It let's you group all the logic for every topic in single classes, trying to reach the goal of single responsibility for every topic.
 
 **How can i use it?**
 
