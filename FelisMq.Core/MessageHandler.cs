@@ -181,7 +181,7 @@ internal abstract class MessageHandler
 
         if (firstConstructor == null)
         {
-            throw new NotImplementedException($"Constructor not implemented in {constructed.Name}");
+            throw new NotSupportedException($"Constructor not implemented in {constructed.Name}");
         }
 
         foreach (var param in firstConstructor.GetParameters())
