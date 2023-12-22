@@ -10,7 +10,7 @@ public static class Extensions
     {
         builder.ConfigureServices((context, services) =>
         {
-            services.Configure<FelisClientConfiguration>(context.Configuration.GetSection(FelisClientConfiguration.FelisMq));
+            services.Configure<FelisMqConfiguration>(context.Configuration.GetSection(FelisMqConfiguration.FelisMq));
             
             var serviceProvider = builder.Build().Services;
 

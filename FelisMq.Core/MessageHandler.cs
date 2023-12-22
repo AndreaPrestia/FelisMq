@@ -15,12 +15,12 @@ namespace FelisMq.Core;
 internal abstract class MessageHandler
 {
     private readonly ILogger<MessageHandler> _logger;
-    private readonly FelisClientConfiguration _configuration;
+    private readonly FelisMqConfiguration _configuration;
     private readonly IServiceProvider _serviceProvider;
     private readonly IMemoryCache _cache;
     private readonly MemoryCacheEntryOptions _cacheEntryOptions;
 
-    protected MessageHandler(ILogger<MessageHandler> logger, IOptionsMonitor<FelisClientConfiguration> configuration,
+    protected MessageHandler(ILogger<MessageHandler> logger, IOptionsMonitor<FelisMqConfiguration> configuration,
         IServiceProvider serviceProvider, IMemoryCache cache)
     {
         ArgumentNullException.ThrowIfNull(logger);
