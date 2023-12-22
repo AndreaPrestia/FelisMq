@@ -6,7 +6,7 @@ namespace FelisMq.Core;
 
 public static class Extensions
 {
-    public static void AddFelisClient(this IHostBuilder builder)
+    public static void AddFelisMq(this IHostBuilder builder)
     {
         builder.ConfigureServices((context, services) =>
         {
