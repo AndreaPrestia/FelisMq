@@ -1,15 +1,13 @@
 # FelisMq
-A library that implements a way to consume MQTT message by topic avoiding to write every time the listening part. It let's you group all the logic for every topic in single classes, trying to reach the goal of single responsibility for every topic.
+A library that implements a way to consume MQTT messages by topic, avoiding to write every time the listening part. It let's you group all the logic for every topic in single classes, trying to reach the goal of single responsibility for every topic.
 
-**How can i use it?**
+**How can I use it?**
 
 You should reference the project and just the following line in your startup part (Program.cs or whatever you prefer):
 
 ```
 builder.AddFelisClient();
 ```
-
-An example of message consumer is the following:
 
 Let's define a class with the metadata of the message that we want to consume:
 ```
@@ -19,7 +17,7 @@ public class TestMessage
     public string? Message { get; set; }
 }
 ```
-Now let's implement the abstract class **Consume<>** as below:
+Now let's implement the abstract class **Consume<>** as here below:
 
 ```
 using System.Text.Json;
@@ -38,7 +36,7 @@ public class TestConsumer : Consume<TestMessage>
     }
 }
 ```
-For the sake of clarity now we have the class **TestConsumer** that implements the abstract class **Consume<>** with just only a console write of the payload as json.
+To keep everything simple for example purposes now we have the class **TestConsumer** that implements the abstract class **Consume<>** with just only a console write of the payload as json.
 
 That's it.
 
@@ -46,7 +44,7 @@ The complete example can be found in the **Examples** directory inside the proje
 
 **Configuration**
 
-Add this part in appsettings.json. 
+Add this section to appsettings.json. 
 
 ```
 "FelisMq": {
@@ -66,21 +64,21 @@ Add this part in appsettings.json.
      }
   }
 ```
-The configuration is composed of:
+The configuration is made of:
 
 Property | Type | Context |
 --- | --- | --- |
-ClientId | string | The MQTT client id that identifies the client. |
-Mqtt | object | The object containing the MQTT service configuration part. |
+ClientId | string | The MQTT client id. |
+Mqtt | object | The MQTT configuration. |
 Mqtt.Host | string | The Host of the MQTT service to reach. |
 Mqtt.Port | integer | The Port of the MQTT service to reach.|
-Credentials | object | The object containing the MQTT service credentials part. |
+Credentials | object | The object containing the MQTT service credentials. |
 Credentials.Username | string | The Username of the MQTT credentials. |
 Credentials.Password | string | The Password of the MQTT credentials.|
-Cache | object | The object containing the cache configuration part for Felis client, used to cache the consumers, to avoid the reflection part everytime. |
-Cache.SlidingExpiration | double | The SlidingExpiration for IMemoryCacheOptions used. |
-Cache.AbsoluteExpiration | double | The AbsoluteExpiration for IMemoryCacheOptions used.|
-Cache.MaxSizeBytes | long | The MaxSizeBytes that can reach the cache, used for IMemoryCacheOptions used. |
+Cache | object | The cache configuration. The cache applies to all the client consumers. |
+Cache.SlidingExpiration | double | The SlidingExpiration for IMemoryCacheOptions. |
+Cache.AbsoluteExpiration | double | The AbsoluteExpiration for IMemoryCacheOptions.|
+Cache.MaxSizeBytes | long | The MaxSizeBytes that can reach the cache, used for IMemoryCacheOptions. |
 
 
 **Conclusion**
